@@ -1,0 +1,24 @@
+{
+  "preset": "wan",
+  "description": "4-city global WAN + cloud VPC",
+  "links": [
+    {"name": "nyc-to-london",        "distance_m": 5570000},
+    {"name": "nyc-to-singapore",     "distance_m": 15340000},
+    {"name": "london-to-singapore",  "distance_m": 10840000},
+    {"name": "singapore-to-sydney",  "distance_m":  6310000},
+    {"name": "nyc-to-cloud-vpc",     "distance_m":       50}
+  ],
+  "subnets": [
+    {"name": "NYC-Office",       "hosts": 400},
+    {"name": "London-Office",    "hosts": 350},
+    {"name": "Singapore-Office", "hosts": 300},
+    {"name": "Sydney-Office",    "hosts": 250},
+    {"name": "Cloud-VPC",        "hosts": 500},
+    {"name": "IoT-Scanners",     "hosts": 2000},
+    {"name": "Mgmt",             "hosts": 50}
+  ],
+  "root_prefix": "10.0.0.0/8",
+  "num_as": 3,
+  "has_cloud": true,
+  "features": ["IPsec-IKEv2", "eBGP", "multi-area-OSPF", "route-summarization"]
+}

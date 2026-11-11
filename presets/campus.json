@@ -1,0 +1,19 @@
+{
+  "preset": "campus",
+  "description": "3-building campus LAN",
+  "links": [
+    {"name": "building-a-to-core", "distance_m": 80},
+    {"name": "building-b-to-core", "distance_m": 250},
+    {"name": "building-c-to-core", "distance_m": 380}
+  ],
+  "subnets": [
+    {"name": "Staff",    "hosts": 500},
+    {"name": "Students", "hosts": 800},
+    {"name": "IoT",      "hosts": 200},
+    {"name": "Mgmt",     "hosts": 50}
+  ],
+  "root_prefix": "10.0.0.0/16",
+  "num_as": 1,
+  "has_cloud": false,
+  "features": ["802.1Q", "RSTP", "PoE", "OSPF"]
+}

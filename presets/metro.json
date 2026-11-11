@@ -1,0 +1,20 @@
+{
+  "preset": "metro",
+  "description": "HQ + 2 remote sites MAN",
+  "links": [
+    {"name": "hq-to-site1",   "distance_m": 15000},
+    {"name": "hq-to-site2",   "distance_m": 35000},
+    {"name": "site1-to-site2","distance_m": 22000}
+  ],
+  "subnets": [
+    {"name": "HQ-Users",      "hosts": 200},
+    {"name": "Site1-Users",   "hosts": 150},
+    {"name": "Site2-Users",   "hosts": 100},
+    {"name": "FinTech-Colo",  "hosts": 50},
+    {"name": "Mgmt",          "hosts": 30}
+  ],
+  "root_prefix": "172.16.0.0/20",
+  "num_as": 1,
+  "has_cloud": false,
+  "features": ["OS2-SMF", "dual-homed", "QoS", "sub-5ms"]
+}

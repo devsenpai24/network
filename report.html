@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NetArchitect Project Report</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1f2937;
+    line-height: 1.55;
+    font-size: 10.5pt;
+    margin: 0;
+  }
+  h1, h2, h3, h4 {
+    color: #111827;
+    font-weight: 700;
+  }
+  h1 { font-size: 20pt; margin-bottom: 4px; }
+  h2 { font-size: 13.5pt; margin-top: 22px; margin-bottom: 8px; border-bottom: 1.5px solid #e5e7eb; padding-bottom: 4px; }
+  h3 { font-size: 11pt; margin-top: 14px; margin-bottom: 6px; }
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0 10px 22px; padding: 0; }
+  li { margin-bottom: 4px; }
+  
+  .cover-page {
+    text-align: center;
+    padding-top: 40px;
+    page-break-after: always;
+  }
+  .cover-title {
+    font-size: 24pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-top: 15px;
+    margin-bottom: 8px;
+  }
+  .cover-subtitle {
+    font-size: 13pt;
+    color: #4b5563;
+    margin-bottom: 35px;
+  }
+  .cover-meta {
+    width: 85%;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10pt;
+    margin-bottom: 50px;
+    border-top: 1px solid #d1d5db;
+    border-bottom: 1px solid #d1d5db;
+    padding: 16px 0;
+  }
+  .meta-col { width: 48%; }
+  .cover-inst {
+    margin-top: 40px;
+    font-size: 11pt;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 9pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  
+  .img-card {
+    text-align: center;
+    margin: 16px 0;
+  }
+  .img-card img {
+    max-width: 96%;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .img-caption {
+    font-size: 8.5pt;
+    color: #475569;
+    font-style: italic;
+    margin-top: 5px;
+  }
+  
+  code {
+    background-color: #f1f5f9;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    font-size: 9pt;
+    color: #0f172a;
+  }
+  
+  .page-break {
+    page-break-before: always;
+  }
+  
+  .audit-box {
+    background: #f8fafc;
+    border-left: 3.5px solid #2563eb;
+    padding: 10px 14px;
+    margin: 10px 0;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div style="font-size: 12pt; text-transform: uppercase; letter-spacing: 1.5px; color: #4b5563; font-weight: 600;">
+    Subject: Computer Networks (CIC-307)
+  </div>
+  <div style="font-size: 11pt; color: #6b7280; margin-top: 4px;">
+    Course Mini-Project Report
+  </div>
+
+  <div class="cover-title">NetArchitect: Recommendation & Config Engine</div>
+  <div class="cover-subtitle">Algorithmic Enterprise Network Planning, Bitwise Subnetting & Self-Explaining Cisco IOS Engine</div>
+
+  <div class="cover-meta">
+    <div class="meta-col">
+      <strong>Faculty Evaluator:</strong> Dr. Sachin Gupta<br>
+      <strong>Department:</strong> Computer Science & Engineering (CSE)<br>
+      <strong>Course Code:</strong> CIC-307 (Weight: 100 Points)<br>
+      <strong>Semester:</strong> 5th Semester
+    </div>
+    <div class="meta-col">
+      <strong>Student Architect:</strong> Lead Network Architect<br>
+      <strong>System Platform:</strong> Python 3.11+ / macOS / Cisco IOS<br>
+      <strong>Automated Tests:</strong> 34 / 34 Passed (100% Green)<br>
+      <strong>Submission Date:</strong> 11 November 2026
+    </div>
+  </div>
+
+  <div class="cover-inst">
+    Maharaja Agrasen Institute of Technology (MAIT)<br>
+    <span style="font-size: 9.5pt; font-weight: 400; color: #6b7280;">
+      Affiliated to Guru Gobind Singh Indraprastha University (GGSIPU), New Delhi - 110085
+    </span>
+  </div>
+
+  <div style="margin-top: 50px; font-size: 9pt; color: #4b5563;">
+    <strong>Verification Repository:</strong> <code>https://github.com/NetArchitect/miniproject-cn</code>
+  </div>
+</div>
+
+<!-- PAGE 2: PROJECT OVERVIEW & FEATURES -->
+<div class="page-break"></div>
+
+<h2>1. Executive Project Overview</h2>
+<p>
+Modern enterprise network design requires rigorous adherence to physical link limits, non-overlapping address allocations, and consistent security policies. In human workflows or standard generative AI drafts, subtle errors such as overlapping subnets, inverted ACL rules, unpruned 802.1Q switch trunks, or using subnet masks instead of wildcard masks in routing statements easily lead to network collapse.
+</p>
+<p>
+<strong>NetArchitect</strong> was built to eliminate these failure classes programmatically. It operates as an algorithmic network architecture engine that ingests structured parameter specifications (either preset enterprise profiles or custom JSON specifications), processes them through strict deterministic rule engines, dynamically computes physical link physics and optical power budgets, executes a pure bitwise Variable Length Subnet Mask (VLSM) allocator, and exports complete, copy-paste-ready Cisco IOS configurations alongside natural-language architectural rationales citing IEEE and IETF RFC standards.
+</p>
+
+<h2>2. Key Architectural Features</h2>
+<ul>
+  <li><strong>Physical Layer (L1) Media Selection:</strong> Automatically selects Cat6a UTP for distances &le; 100 m (cites IEEE 802.3an limit); OM4 Multimode Fiber (10GBASE-SR) for 101–400 m (cites 850 nm modal dispersion limit); and OS2 Single-Mode Fiber (10GBASE-LR up to 10 km, 10GBASE-ER up to 40 km) for links &gt; 400 m. Calculates transceiver optical power budgets ($\text{Tx} - \text{Rx}$ sensitivity vs fiber and connector loss). Forcing copper beyond 100 m raises a fatal <code>PhysicalDistanceViolationError</code>.</li>
+  <li><strong>Pure Bitwise VLSM Allocator (L3):</strong> Built entirely with native Python bitwise integer operators (<code>&gt;&gt;</code>, <code>&lt;&lt;</code>, <code>&amp;</code>, <code>~</code>) with <strong>zero dependency on the <code>ipaddress</code> module</strong> in the production engine. Automatically aligns blocks to power-of-2 boundaries, allocates in descending host order, reserves gateways (Network + 1), and guarantees zero subnet collisions while handling RFC 3021 /31 point-to-point links and /32 host loopbacks.</li>
+  <li><strong>L3 Routing & Supernet Protocol Engine:</strong> Recommends Single-Area OSPFv2 (RFC 2328) for single autonomous systems with &lt; 50 subnets for fast Dijkstra SPF convergence. Selects Multi-Area OSPF combined with external BGP (eBGP, RFC 4271) when multiple autonomous systems, large subnet scales, or cloud VPC attachments exist. Automatically computes exact wildcard masks and supernet boundaries.</li>
+  <li><strong>Hardened Cisco IOS Config Generator:</strong> Produces device-tailored Cisco IOS (.cfg) commands for Core switches, Access switches, and Edge routers. Enforces strict security baselines: explicit <code>switchport trunk allowed vlan</code> (never <code>allowed vlan all</code>), isolated dead Native VLAN 999, Rapid-PVST+, and IKEv2/IPsec AES-256-GCM configurations.</li>
+  <li><strong>Self-Explaining Rationale Engine:</strong> Generates a number-specific, natural-language engineering rationale log for every single decision made, explaining the exact physical distance, optical decibel margin, and RFC justification.</li>
+</ul>
+
+<h2>3. Technologies Used</h2>
+<table>
+  <tr>
+    <th>Component</th>
+    <th>Technology</th>
+    <th>Role & Justification</th>
+  </tr>
+  <tr>
+    <td><strong>Core Language</strong></td>
+    <td>Python 3.11+ / Python 3.13</td>
+    <td>Standard library only (<code>argparse</code>, <code>math</code>, <code>dataclasses</code>, <code>json</code>, <code>sys</code>). Zero external production runtime dependencies.</td>
+  </tr>
+  <tr>
+    <td><strong>Test Automation</strong></td>
+    <td>pytest 8.3.4</td>
+    <td>34 test cases covering boundary conditions (100m/101m, 400m/401m), address exhaustion, bitwise overlap, wildcard masks, and config compliance.</td>
+  </tr>
+  <tr>
+    <td><strong>Cross-Verification</strong></td>
+    <td>Python <code>ipaddress</code> (Test Suite Only)</td>
+    <td>Used solely inside test suites as an independent ground-truth oracle to cross-check custom bitwise math results.</td>
+  </tr>
+  <tr>
+    <td><strong>Target Hardware</strong></td>
+    <td>Cisco IOS 15.x &amp; IOS-XE 16.x</td>
+    <td>Cisco Catalyst 3650 Core, Catalyst 2960 Access, and Cisco ISR 4321 / 2811 Edge Routers.</td>
+  </tr>
+  <tr>
+    <td><strong>Simulation</strong></td>
+    <td>Cisco Packet Tracer / GNS3 / EVE-NG</td>
+    <td>Directly ingest exported <code>.txt</code> / <code>.cfg</code> files into CLI config terminals.</td>
+  </tr>
+</table>
+
+<!-- PAGE 3: PIPELINE & SCENARIOS -->
+<div class="page-break"></div>
+
+<h2>4. System Architecture & Decision Flow</h2>
+<p>
+The application executes a linear, fail-fast architectural pipeline where each subsystem validates constraints before passing structured records to downstream modules:
+</p>
+<ol>
+  <li><strong>Input Ingestion & Validation (<code>validator.py</code>):</strong> Ingests JSON profiles, checks positive integer/float bounds on distance (&gt;0) and hosts (&gt;0), and validates CIDR formats. Invalid configurations trigger <code>InvalidInputError</code> immediately.</li>
+  <li><strong>Distance Physics & Optical Budget (<code>media.py</code>):</strong> Maps link distances to physical media. For single-mode fiber (&gt;400 m), calculates transceiver optical budgets:
+  $$\text{Budget (dB)} = P_{\text{Tx}} - P_{\text{Rx\_sens}}$$
+  $$\text{Total Link Loss (dB)} = (\text{Distance km} \times 0.4\text{ dB/km}) + (2 \times 0.5\text{ dB connector loss})$$
+  $$\text{Margin (dB)} = \text{Budget} - \text{Total Link Loss}$$
+  </li>
+  <li><strong>Bitwise VLSM Engine (<code>vlsm.py</code>):</strong> Converts root CIDR into 32-bit integers via bit shifting. Sorts subnet demands descending by host requirement. Aligns current pointer to next boundary via <code>(ptr + block - 1) &amp; ~(block - 1)</code>. Evaluates address exhaustion against root broadcast, outputs subnet, mask, wildcard, gateway, and utilization efficiency.</li>
+  <li><strong>Routing Protocol Selection (<code>routing.py</code>):</strong> Determines routing domain hierarchy (OSPF Area 0 vs. Multi-Area OSPF + eBGP) based on scale, autonomous system boundaries, and cloud VPC interconnects.</li>
+  <li><strong>Configuration Generator (<code>configgen.py</code>):</strong> Populates device templates with exact VLAN, trunk, SVI, OSPF, and IPsec parameters.</li>
+  <li><strong>Explainable Exporter (<code>explain.py</code> &amp; <code>cli.py</code>):</strong> Prints color-coded terminal reports and exports ready-to-paste Cisco configs and markdown rationales into the <code>exports/</code> directory.</li>
+</ol>
+
+<h2>5. Preset Scenarios Comparison</h2>
+<table>
+  <tr>
+    <th>Scenario Profile</th>
+    <th>Address Space</th>
+    <th>Physical Scale & Links</th>
+    <th>L1 Selection</th>
+    <th>Routing & Protection</th>
+  </tr>
+  <tr>
+    <td><strong>Profile 1: Campus LAN</strong><br><code>presets/campus.json</code></td>
+    <td><code>10.0.0.0/16</code><br>1,550 endpoints<br>4 Subnets (VLAN 10, 20, 30, 99)</td>
+    <td>3 Buildings<br>Links: 80 m, 250 m, 380 m</td>
+    <td>Cat6a (80 m)<br>OM4 MMF 10GBASE-SR (250 m, 380 m)</td>
+    <td>Single-Area OSPFv2 (Area 0)<br>Rapid-PVST+, Explicit Dot1Q trunks, Native VLAN 999.</td>
+  </tr>
+  <tr>
+    <td><strong>Profile 2: Metro MAN</strong><br><code>presets/metro.json</code></td>
+    <td><code>172.16.0.0/20</code><br>530 users<br>5 Subnets (HQ, 2 Sites, Colo, Mgmt)</td>
+    <td>HQ + 2 Remote Sites<br>Links: 15 km, 22 km, 35 km</td>
+    <td>OS2 Single-Mode Fiber<br>10GBASE-ER (all links &gt; 10 km)</td>
+    <td>OSPFv2 Area 0, Dual-homed resilient ring, Sub-5ms QoS policy with DSCP EF priority.</td>
+  </tr>
+  <tr>
+    <td><strong>Profile 3: Global WAN</strong><br><code>presets/wan.json</code></td>
+    <td><code>10.0.0.0/8</code><br>3,800 endpoints<br>7 Subnets (NYC, London, SG, Sydney, Cloud, IoT, Mgmt)</td>
+    <td>4 Cities + 1 AWS Cloud VPC<br>Subsea &amp; Transcontinental fiber links</td>
+    <td>OS2 SMF 10GBASE-ER<br>(Intercontinental spans require EDFA/repeater amplification)</td>
+    <td>Multi-Area OSPFv2 + eBGP (AS 65000–65004), Route Summarization (<code>10.0.0.0/20</code>), IPsec IKEv2 / AES-256-GCM.</td>
+  </tr>
+</table>
+
+<!-- PAGE 4: CONFIG & HARDENING -->
+<div class="page-break"></div>
+
+<h2>6. Cisco Configuration & Security Hardening Design</h2>
+<p>
+The generated Cisco configuration files adhere to enterprise-grade security baselines, ensuring that raw device configs can be directly imported into Packet Tracer without syntax errors or security vulnerabilities.
+</p>
+
+<h3>Role-Specific Device Configuration</h3>
+<ul>
+  <li><strong>Core Switch (Catalyst 3650 / IOS-XE):</strong> Enables <code>ip routing</code>, operates as Spanning-Tree Root Primary under <code>spanning-tree mode rapid-pvst</code>, hosts Switched Virtual Interfaces (SVIs) as default gateways, and runs OSPF Area 0 with exact wildcard masks (e.g., <code>network 10.0.0.0 0.0.3.255 area 0</code>).</li>
+  <li><strong>Access Switches (Catalyst 2960 / IOS 15.0):</strong> Configured with access ports assigned to respective VLANs, protected with <code>spanning-tree portfast</code> and <code>bpduguard enable</code> to mitigate rogue STP bridge injection attacks. Includes management SVI with SSHv2 and 2048-bit RSA keys.</li>
+  <li><strong>Edge Router (Cisco ISR 4321 / 2811):</strong> Establishes routed point-to-point /30 inter-chassis links, terminates WAN links, and executes policy maps for financial latency protection (Metro MAN) and eBGP peering with IPsec Crypto Profiles (Global WAN).</li>
+</ul>
+
+<h3>Enterprise Security Measures Enforced</h3>
+<ol>
+  <li><strong>Trunk Port Hardening:</strong> Every trunk interface explicitly defines allowed VLANs (e.g., <code>switchport trunk allowed vlan 10,20,30</code>). NetArchitect's configuration validator strictly rejects and bans the insecure default <code>allowed vlan all</code>.</li>
+  <li><strong>Dead Native VLAN Isolation:</strong> Untagged traffic is assigned to unrouted <code>native vlan 999</code>, disabling default VLAN 1 trunk traversal and preventing 802.1Q double-tagging VLAN hopping exploits (CVE-1999-0775).</li>
+  <li><strong>Dynamic Trunking Protocol (DTP) Suppression:</strong> All trunks execute <code>switchport nonegotiate</code> to prevent rogue attacker devices from negotiating unauthorized trunk links.</li>
+  <li><strong>Hardened ACL Sequence:</strong> Access Control Lists enforce stateful order: permits local DHCP and DNS infrastructure first, permits ICMP echo to the local gateway, denies all inter-VLAN RFC 1918 private ranges, and permits external internet egress.</li>
+</ol>
+
+<!-- PAGE 5: SCREENSHOTS & PROGRAM EXECUTION -->
+<div class="page-break"></div>
+
+<h2>7. Output Screenshots & Empirical Execution</h2>
+<p>
+The program's live execution, automated test suite, and optical budget calculations are captured below:
+</p>
+
+<div class="img-card">
+  <img src="report_assets/fig1_cli_campus.png" alt="Main CLI Execution">
+  <div class="img-caption">Figure 1: NetArchitect CLI executing Campus LAN preset — L1 physical media selection, bitwise VLSM allocation, and overall efficiency metrics.</div>
+</div>
+
+<div class="img-card">
+  <img src="report_assets/fig3_metro_optical.png" alt="Metro Optical Budget">
+  <div class="img-caption">Figure 2: Metro MAN execution with automated optical power budget calculations and file export to <code>exports/metro/</code>.</div>
+</div>
+
+<div class="img-card">
+  <img src="report_assets/fig2_pytest.png" alt="Pytest Test Suite">
+  <div class="img-caption">Figure 3: Pytest automated test execution — 34/34 unit tests passing across all boundary, bitwise, routing, and config test suites.</div>
+</div>
+
+<!-- PAGE 6: TOPOLOGY DIAGRAMS -->
+<div class="page-break"></div>
+
+<h2>8. Cisco Packet Tracer Topology Diagrams</h2>
+<p>
+The generated configurations reflect three deployment topologies designed for Packet Tracer and GNS3:
+</p>
+
+<div class="img-card">
+  <img src="report_assets/topo_campus.png" alt="Campus LAN Topology">
+  <div class="img-caption">Figure 4: Campus LAN Topology — Catalyst 3650 Core with redundant 10GBASE-SR OM4 trunks to Access Switches, Rapid-PVST+ root protection, and VLAN isolation.</div>
+</div>
+
+<div class="img-card">
+  <img src="report_assets/topo_metro.png" alt="Metro MAN Topology">
+  <div class="img-caption">Figure 5: Metro MAN Resilient Ring — OS2 Single-Mode Fiber links with 10GBASE-ER transceivers, verified optical power budgets, and sub-5ms QoS prioritization.</div>
+</div>
+
+<div class="img-card">
+  <img src="report_assets/topo_wan.png" alt="Global WAN Topology">
+  <div class="img-caption">Figure 6: Global WAN Distributed Architecture — Multi-AS eBGP mesh connecting 4 municipal sites to AWS Cloud VPC with IKEv2 / AES-256-GCM IPsec tunnels.</div>
+</div>
+
+<!-- PAGE 7: AI AUDIT & DEFENSE -->
+<div class="page-break"></div>
+
+<h2>9. AI Code Audit & Technical Defense (20 Pts)</h2>
+<p>
+In compliance with the CIC-307 Academic Integrity and AI Defense Protocol, AI-generated code was subjected to formal adversarial analysis. Three major networking vulnerabilities generated by AI were detected, diagnosed, and remediated:
+</p>
+
+<div class="audit-box">
+  <h3 style="margin-top:0;">Defense Case 1: Python Infinite Bitwise Sign-Bit Propagation (Layer 3 / OSPF)</h3>
+  <p><strong>Buggy AI Code:</strong> <code>wildcard_int = ~mask_int</code> &amp; <code>(ptr + block - 1) &amp; (-block_size)</code></p>
+  <p><strong>Technical Defect:</strong> Python integers possess arbitrary precision without fixed 32-bit registers. Performing bitwise NOT produces negative numbers (e.g. <code>~4294967040 = -4294967041</code>). During bitwise right-shifting, the negative sign bit propagates, generating invalid masks like <code>-1.0.0.255</code>.</p>
+  <p><strong>Packet Flow Breakdown:</strong> Cisco IOS rejects negative wildcard strings upon loading. The router fails to activate OSPF on the interface; multicast <code>224.0.0.5</code> OSPF Hellos cease, dropping neighbor adjacencies into <code>DOWN</code> state and blackholing inter-subnet traffic.</p>
+  <p><strong>Human Remediation:</strong> Enforced explicit 32-bit masking: <code>wildcard_int = (~mask_int) &amp; 0xFFFFFFFF</code>.</p>
+</div>
+
+<div class="audit-box">
+  <h3 style="margin-top:0;">Defense Case 2: Unconstrained Switchport Trunks &amp; Native VLAN 1 (Layer 2 Security)</h3>
+  <p><strong>Buggy AI Code:</strong> <code>switchport trunk allowed vlan all</code> &amp; <code>switchport trunk native vlan 1</code></p>
+  <p><strong>Technical Defect:</strong> Retaining default Native VLAN 1 across open trunks exposes the infrastructure to 802.1Q double-tagging VLAN hopping attacks (CVE-1999-0775).</p>
+  <p><strong>Packet Flow Breakdown:</strong> An attacker on Access Switch 1 transmits frames with outer tag <code>VLAN 1</code> and inner victim tag <code>VLAN 99</code> (Management). The Core switch receives the frame on Native VLAN 1, strips the outer tag, and forwards the packet into Management VLAN 99, bypassing all Layer 3 ACL barriers.</p>
+  <p><strong>Human Remediation:</strong> Enforced dynamic allowed lists (<code>switchport trunk allowed vlan 10,20,30</code>), assigned Native traffic to unrouted <code>native vlan 999</code>, and enabled <code>switchport nonegotiate</code>.</p>
+</div>
+
+<div class="audit-box">
+  <h3 style="margin-top:0;">Defense Case 3: Transceiver Misclassification &amp; Optical Attenuation (Layer 1 Physics)</h3>
+  <p><strong>Buggy AI Code:</strong> Defaulted all fiber links to <code>10GBASE-LR</code> (10 km limit) and omitted connector insertion loss.</p>
+  <p><strong>Technical Defect:</strong> For a 35 km Metro link, link loss exceeds 15.0 dB ($35 \times 0.4 + 1.0\text{ dB connectors}$). The 10GBASE-LR optical budget is only 14.90 dB, yielding a negative margin ($-0.1\text{ dB}$).</p>
+  <p><strong>Packet Flow Breakdown:</strong> Optical power received at the photodiode drops below $-14.4\text{ dBm}$. The photodiode fails to differentiate optical bits from thermal noise, triggering massive CRC/FCS errors, interface flapping, OSPF dead-timer expirations, and continuous SPF recalculation storms.</p>
+  <p><strong>Human Remediation:</strong> Programmed distance-tiered transceiver selection (10GBASE-LR for &le;10 km, 10GBASE-ER for 10–40 km with 16.30 dB budget), guaranteeing verified positive margins.</p>
+</div>
+
+<!-- PAGE 8: LIMITATIONS & CONCLUSION -->
+<div class="page-break"></div>
+
+<h2>10. Limitations &amp; Future Scope</h2>
+<ul>
+  <li><strong>Stateless ACL Scope:</strong> NetArchitect currently generates stateless Cisco IOS Extended ACLs. Production enterprise deployments often incorporate stateful Zone-Based Firewalls (ZFW) or Cisco ASA/Firepower appliances.</li>
+  <li><strong>Single Representative Access Switch:</strong> Generated access switch configurations model a representative 24-port switch per building. In multi-switch stacks, Cisco StackWise configuration directives would be required.</li>
+  <li><strong>Transcontinental Physical Layer:</strong> For distances exceeding 40 km (e.g. transcontinental WAN spans), the engine correctly flags insufficient optical margins. Real-world submarine cables employ Erbium-Doped Fiber Amplifiers (EDFA) and Reconfigurable Optical Add-Drop Multiplexers (ROADM).</li>
+</ul>
+
+<h2>11. Conclusion</h2>
+<p>
+<strong>NetArchitect</strong> demonstrates that software-defined network engineering rules can bridge the gap between high-level architectural requirements and low-level, deployment-ready device configurations. By combining pure bitwise VLSM allocation, standards-compliant physical media calculations, and hardened Cisco IOS configuration templates, the system guarantees zero subnet overlaps, verified optical power margins, and resilient Layer 2/3 topologies.
+</p>
+<p>
+Furthermore, through its integrated AI Code Audit and Defense mechanisms, this project showcases the essential role of the human network engineer in rigorously validating and debugging AI-assisted networking code against physical and algorithmic realities.
+</p>
+
+</body>
+</html>
